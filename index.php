@@ -1,3 +1,7 @@
+<?php
+	require_once("../php-crud/php/component.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,34 +20,99 @@
 	<main>
 	
 	<div class="container text-center">
-		<h1 class="py-4"><i class="large material-icons">library_books</i> Book Store</h1>
+		<h1 class="py-4"><i class="large material-icons">book</i> Book Store</h1>
 
 		<div class="d-flex justify-content-center">
 
 			<form action="" method="post" accept-charset="utf-8">
 
-				<div class="py-2">
-					<div class="input-group mb-2">
-
-        				<div class="input-group-prepend">
-         					<div class="input-group-text bg-warning"><i class="large material-icons">perm_identity</i></div>
-    					</div>
-
-        				<input type="text" class="form-control" id="inlineFormInputGroup" autocomplete="off" placeholder="Id">
-
-      				</div>
+				<!-- php/component.php -->
+				<div class="pt-2">
+					<?php 
+						inputElement(
+							"<i class='large material-icons'>library_books</i>", 
+							"Id",
+							"id",
+							"",
+							"bg-light"
+						);
+					?>
 				</div>
 
 				<div class="pt-2">
-					<div class="input-group mb-2">
+					<?php 
+						inputElement(
+							"<i class='large material-icons'>book</i>", 
+							"Book Name",
+							"book_name",
+							"",
+							"bg-light"
+						);
+					?>
+				</div>
 
-        				<div class="input-group-prepend">
-         					<div class="input-group-text bg-warning"><i class="large material-icons">perm_identity</i></div>
-    					</div>
+				<div class="row pt-2">
+					<div class="col">
+						<?php 
+							inputElement(
+								"<i class='large material-icons'>publish</i>", 
+								"Publiser",
+								"book_publisher",
+								"",
+								"bg-light"
+							);
+						?>
+					</div>
+					<div class="col">
+						<?php 
+							inputElement(
+								"<i class='large material-icons'>attach_money</i>", 
+								"Price",
+								"book_price",
+								"",
+								"bg-light"
+							);
+						?>
+					</div>
+				</div>
 
-        				<input type="text" class="form-control" id="inlineFormInputGroup" autocomplete="off" placeholder="Id">
-
-      				</div>
+				<div class="d-flex">
+					<?php 
+						buttonElement(
+							"btn-create",
+							"btn btn-success",
+							"<i class='large material-icons'>library_add</i>",
+							"create",
+							"",
+						);
+					?>
+					<?php 
+						buttonElement(
+							"btn-read",
+							"btn btn-primary",
+							"<i class='large material-icons'>sync</i>",
+							"read",
+							""
+						);
+					?>
+					<?php 
+						buttonElement(
+							"btn-update",
+							"btn btn-warning",
+							"<i class='large material-icons'>update</i>",
+							"update",
+							""
+						);
+					?>
+					<?php 
+						buttonElement(
+							"btn-delete",
+							"btn btn-danger",
+							"<i class='large material-icons'>delete</i>",
+							"delete",
+							""
+						);
+					?>
 				</div>
 
 			</form>	

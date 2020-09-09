@@ -1,5 +1,6 @@
 <?php
 	require_once("../php-crud/php/component.php");
+	require_once("../php-crud/php/operation.php");
 ?>
 
 <!DOCTYPE html>
@@ -116,8 +117,32 @@
 				</div>
 
 			</form>	
-
 		</div>
+
+		<div class="d-flex justify-content-center table-data">
+			<table class="table table-striped table-dark">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>Book Name</th>
+						<th>Publisher</th>
+						<th>Book Price</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					<tr>
+						<td>1</td>
+						<td>Book name</td>
+						<td>Editora</td>
+						<td>20.99</td>
+						<td><i class='large material-icons'>edit</i></td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+
 	</div>
 
 	</main>

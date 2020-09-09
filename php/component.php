@@ -1,6 +1,4 @@
 <?php
-	
-
 
 function inputElement ($icon, $placeholder, $name, $value, $styleclass) {
 	// Dentro de [""] posso usa [\"] ou ['] 

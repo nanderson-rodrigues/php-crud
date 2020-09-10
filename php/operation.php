@@ -5,17 +5,21 @@ require_once("component.php");
 
 $con = createDB();
 
-//create button - click
+// create button - click
 if (isset($_POST['create'])) {
 	createData();
 }
-
-// read botton
+// read button - click
 if (isset($_POST['read'])) {
 	getData();
 }
+// Update button 0 click
+if (isset($_POST['update'])) {
+	updateData();
+}
 
-// Insert
+
+// Create
 function createData() {
 	$book_name = textboxValue("book_name");
 	$book_publisher = textboxValue("book_publisher");
@@ -39,7 +43,7 @@ function createData() {
 	}
 }
 
-
+// Read
 function getData(){
 
 	$sql = "SELECT * FROM books";
@@ -48,6 +52,31 @@ function getData(){
 
 	if (mysqli_num_rows($result) > 0) {
 		return $result;
+	}
+}
+
+//Update
+// processo parecido com a funcao de criar
+function updateData() {
+	// aqui poderia usar $_POST["book_id"] direto, mas a funcao texboxValue possui medidas de segurança
+	$book_id = textboxValue("book_id"); 
+	$book_name = textboxValue("book_name");
+	$book_publisher = textboxValue("book_publisher");
+	$book_price = textboxValue("book_price"); 
+
+	if ($book_name && $book_publisher && $book_price) {
+
+		$sql = "UPDATE books SET book_name='$book_name', book_publisher='$book_publisher', book_price='$book_price' WHERE id='$book_id';
+		";
+
+		if (mysqli_query($GLOBALS['con'], $sql)) {
+			textMessage("success", "Data Successfully Updated!!!");
+		}else {
+			textMessage("error", "Enable to Update Data!!!");
+		}
+
+	}else {
+		textMessage("error", "Select Data Using Edit Icon");
 	}
 }
 

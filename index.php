@@ -138,12 +138,14 @@
 
 						if ($result) {
 							while ($row = mysqli_fetch_assoc($result)) {
+								//data-id irá mudar conforme o id ( separando os registros diferentes )
 					?>
 							<tr>
-								<td><?php echo $row['id']?></td>
-								<td><?php echo $row['book_name']?></td>
-								<td><?php echo $row['book_publisher']?></td>
-								<td><?php echo $row['book_price']?></td>
+								<td data-id="<?php echo $row['id']; ?>" > <?php echo $row['id']; ?> </td>
+								<td data-id="<?php echo $row['id']; ?>" > <?php echo $row['book_name']; ?> </td>
+								<td data-id="<?php echo $row['id']; ?>" > <?php echo $row['book_publisher']; ?> </td>
+								<td data-id="<?php echo $row['id']; ?>" > <?php echo "$" .  $row['book_price']; ?> </td>
+								<td> <i class="large material-icons btnedit" data-id="<?php echo $row['id']; ?>">edit</i> </td>
 							</tr>
 					<?php			
 							}
@@ -164,5 +166,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	<script src="main.js"></script>
 </body>
 </html>

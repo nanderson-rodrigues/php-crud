@@ -25,7 +25,7 @@ function createDB () {
 				id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				book_name VARCHAR(25) NOT NULL,
 				book_publisher VARCHAR(20),
-				book_price FLOAT 
+				book_price FLOAT(6)
 			)
 		";
 

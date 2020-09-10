@@ -131,13 +131,26 @@
 					</tr>
 				</thead>
 				<tbody id="tbody">
-					<tr>
-						<td>1</td>
-						<td>Book name</td>
-						<td>Editora</td>
-						<td>20.99</td>
-						<td><i class='large material-icons'>edit</i></td>
-					</tr>
+					<?php
+
+					if (isset($_POST['read'])) {
+						$result = getData();
+
+						if ($result) {
+							while ($row = mysqli_fetch_assoc($result)) {
+					?>
+							<tr>
+								<td><?php echo $row['id']?></td>
+								<td><?php echo $row['book_name']?></td>
+								<td><?php echo $row['book_publisher']?></td>
+								<td><?php echo $row['book_price']?></td>
+							</tr>
+					<?php			
+							}
+						}
+					}
+
+					?>
 				</tbody>
 
 			</table>

@@ -10,6 +10,12 @@ if (isset($_POST['create'])) {
 	createData();
 }
 
+// read botton
+if (isset($_POST['read'])) {
+	getData();
+}
+
+// Insert
 function createData() {
 	$book_name = textboxValue("book_name");
 	$book_publisher = textboxValue("book_publisher");
@@ -25,13 +31,26 @@ function createData() {
 		if (mysqli_query($GLOBALS['con'], $sql)) {
 			textMessage("success", "Successfully inserted!!!");
 		}else {
-			echo "Error !!!";
+			textMessage("error", "Error!");
 		}
 
 	}else {
 		textMessage("error", "Preecha o formulário!");
 	}
 }
+
+
+function getData(){
+
+	$sql = "SELECT * FROM books";
+
+	$result = mysqli_query($GLOBALS['con'], $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+		return $result;
+	}
+}
+
 
 function textboxValue($value) {
 	//trim() -> security for sql injection

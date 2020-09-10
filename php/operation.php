@@ -17,6 +17,9 @@ if (isset($_POST['read'])) {
 if (isset($_POST['update'])) {
 	updateData();
 }
+if (isset($_POST['delete'])) {
+	deleteData();	
+}
 
 
 // Create
@@ -59,14 +62,14 @@ function getData(){
 // processo parecido com a funcao de criar
 function updateData() {
 	// aqui poderia usar $_POST["book_id"] direto, mas a funcao texboxValue possui medidas de segurança
-	$book_id = textboxValue("book_id"); 
+	$book_id = (int)textboxValue("book_id"); 
 	$book_name = textboxValue("book_name");
 	$book_publisher = textboxValue("book_publisher");
-	$book_price = textboxValue("book_price"); 
+	$book_price = (float)textboxValue("book_price"); 
 
 	if ($book_name && $book_publisher && $book_price) {
 
-		$sql = "UPDATE books SET book_name='$book_name', book_publisher='$book_publisher', book_price='$book_price' WHERE id='$book_id';
+		$sql = "UPDATE books SET book_name='$book_name', book_publisher='$book_publisher', book_price=$book_price WHERE id=$book_id;
 		";
 
 		if (mysqli_query($GLOBALS['con'], $sql)) {
@@ -77,6 +80,19 @@ function updateData() {
 
 	}else {
 		textMessage("error", "Select Data Using Edit Icon");
+	}
+}
+
+// Delete
+function deleteData() {
+	$book_id = (int) textboxValue("book_id");
+
+	$sql = "DELETE FROM books WHERE id=$book_id";
+
+	if (mysqli_query($GLOBALS['con'], $sql)) {
+		textMessage("success", "Data deleted Successfully!!!");
+	}else {
+		textMessage("error", "Uneble to delete de data!!");
 	}
 }
 
